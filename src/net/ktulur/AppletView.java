@@ -4,6 +4,7 @@ import javax.swing.JApplet;
 
 /**
  * @author Ivan Mosquera Paulo
+ * 
  */
 public class AppletView extends JApplet {
 	public void init() {

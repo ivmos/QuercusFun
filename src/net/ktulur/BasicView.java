@@ -121,21 +121,18 @@ public class BasicView extends javax.swing.JPanel {
     
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {
     	
-        try {
+     
         	// Create temp file.
-            File temp = File.createTempFile("pattern", ".suffix");
-
-            // Delete temp file when program exits.
-            temp.deleteOnExit();
+            //File temp = File.createTempFile("pattern", ".suffix");            
+            //temp.deleteOnExit();
             
-            BufferedWriter out = new BufferedWriter(new FileWriter(temp));
-			out.write(jTextArea1.getText());
-			out.close();
-			jTextArea2.setText((new QuercusFun()).process(temp.getAbsolutePath()));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+            //BufferedWriter out = new BufferedWriter(new FileWriter(temp));
+			//out.write(jTextArea1.getText());
+			//out.close();
+			//jTextArea2.setText((new QuercusFun()).process(temp.getAbsolutePath()));
+			jTextArea2.setText((new QuercusFun()).process(jTextArea1.getText()));
+
+        
         
     }
 
