@@ -103,19 +103,29 @@ public class QuercusFun /*extends StreamImpl*/{
 		*/
 	}
 	
+	public void processFile(String filename) {
+		FilePath path = new FilePath(filename);
+		QuercusPage qp;
+		try {
+			qp = quercus.parse(path);
+			WriteStream out = new WriteStream(StdoutStream.create());
+			Env env = quercus.createEnv(qp, out, null, null);
+			env.setTimeLimit(-1);
+			Value res = qp.executeTop(env);
+			out.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public String process(String input) {
 		try {
 			
-			
-			//FilePath path = new FilePath(filename);
-			
-			//rs.read(code.toCharArray(), code.length());
-			
-			
+
 			QuercusPage qp = quercus.parse(StringStream.open(input));
-			
-//					
- 			//WriteStream out = new WriteStream(StdoutStream.create());
+
 			String salida = "";
 			DirectStream directS = new DirectStream(salida);
 			WriteStream out = new WriteStream(directS);
@@ -131,9 +141,6 @@ public class QuercusFun /*extends StreamImpl*/{
 			//out.seekEnd(out.getBufferSize());
 			//System.out.println(directS.get_string());
 			return directS.getInternalOut();
-			
-			
-			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

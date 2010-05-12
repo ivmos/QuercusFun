@@ -140,13 +140,13 @@ public class BasicView extends javax.swing.JPanel {
     * @param args the command line arguments
     */
     public static void main(String args[]) {
-    	System.out.println(args.length);
     	if (args.length > 0) {
-    		System.out.println((new QuercusFun()).process(args[0]));
+    		(new QuercusFun()).processFile(args[0]);
     	} else {
 	        java.awt.EventQueue.invokeLater(new Runnable() {
 	            public void run() {
 	            	JFrame jf = new JFrame();
+	            	jf.setTitle("QuercusFun 0.1");
 	            	jf.setSize(400, 400);
 	            	jf.add(new BasicView());
 	            	jf.setVisible(true);

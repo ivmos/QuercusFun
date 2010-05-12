@@ -1,5 +1,8 @@
 package net.ktulur;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+
 import javax.swing.JApplet;
 
 /**
@@ -7,9 +10,19 @@ import javax.swing.JApplet;
  * 
  */
 public class AppletView extends JApplet {
+	
 	public void init() {
+		
+		this.setSize(400, 400);
+		AccessController.doPrivileged(new PrivilegedAction() {
+	        public Object run() {
+
 		BasicView v = new BasicView();
 		getContentPane().add(v);
-		this.setSize(400, 400);
+		return null;
+		
+	        }
+		});
+	    
 	}
 }
